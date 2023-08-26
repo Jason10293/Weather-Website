@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+body{
+  background-color: lightblue;
+  height: 846px;
+}
+
+.website{
+  height: 101%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cloud-background{
+  z-index: -1;
+}
+.landing-page{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 385px;
+  height: 365px;
+  border: solid;
+  border-radius: 20px;
+  transition: transform 1s ease-in-out;
+}
+.landing-page::before{
+  content: "";
+  background-image: url('Images/bg.jpg');
+  background-size: cover; 
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  opacity: 0.4;
+  border-radius: 15px;
+}
+.city-selector{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+.header{
+  display: flex;
+  flex-direction: column;
+  border: red;
+  border-width: 1px;
+  align-items: center;
+
+}
+.weather-app-text{
+  color: rgba(4, 43, 110,255);
+  font-family: Poppins, sans-serif;
+  font-weight: bold;
+  font-size: 30px;
+  margin-top: 15px;
+  margin-left: 0px;
+  margin-bottom: 0px;
+  margin-right: 200px;
+  z-index: 100;
+}
+.city-name-input{
+  z-index: 100;
+  box-sizing: border-box;
+  border: solid 0.1px;
+  width: 250px;
+  height: 2.5rem;
+  outline: none;
+  border-radius: 1.25rem;
+  font-family: Poppins, sans-serif;
+  text-align: center;
+  
+}
+.city-name-input:focus{
+  transition: color 1s;
+}
+.city-name-input:focus::placeholder{
+  color: transparent;
+}
+.city-name-input::placeholder{
+  font-family: Poppins, sans-serif;
+  text-align: center;
+}
+
+
+
+.get-device-location-button{
+  z-index: 100;
+  font-family: Poppins, sans-serif;
+  font-size: 14px;
+  background-color: rgba(4, 43, 110,255);
+  border: none;
+  width: 250px;
+  height: 2.5rem;
+  border-radius: 1.25rem;
+  color: white;
+  cursor: pointer;
+  margin-bottom: 15px;
+  transition: background-color 0.5s;
+}
+.get-device-location-button:hover{
+  background-color: rgba(3, 65, 201,255);
+}
+.top-horizontal-line{
+  display: block;
+  border: 1px solid black;
+  width: 383px;
+  margin-bottom: 10px;
+}
+
+.bottom-horizontal-line{
+  display: block;
+  border: 1px solid black;
+  width: 250px;
+}
+.date{
+  font-family: Poppins, sans-serif;
+  font-weight: 600;
+  font-size: 25px;
+  color: rgba(4, 43, 110,255);
+  font-weight: 450;
+  margin-left: 67px;
+  margin-bottom: 70px;
+}
+
+.date-block{
+  justify-content: left;
+}
+span{
+  display: table;
+
+  text-align: left;
+}
