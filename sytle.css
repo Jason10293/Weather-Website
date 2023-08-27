@@ -129,6 +129,8 @@ span{
 }
 
 .display-weather{
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
   position: absolute;
   background-color: lightblue;
   border: none;
@@ -137,5 +139,80 @@ span{
   opacity: 0;
   z-index: -10;
   border-radius: 20px;
+  z-index: 99;
   /* transition: transform 1s ease-in-out, opacity 2s, background-color 1s; */
 }
+
+
+.current-weather-container{
+  display: grid;
+  grid-template-columns: 2fr 5fr;
+  border: solid;
+  border-color: red;
+}
+.weather-condition{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  border: solid;
+  border-color: red;
+  font-family: Poppins;
+  font-weight: bold;
+  font-size: 22px;
+}
+.four-day-forecast{
+  border: solid;
+  border-color: red;
+}
+
+.weather-icon{
+  border: solid;
+  border-width: 5px;
+  border-color: purple;
+}
+.current-weather{
+  display: grid;
+  grid-template-rows: 2fr 1fr;
+  /* border: solid;
+  border-width: 5px;
+  border-color: green; */
+}
+
+.temperature{
+  display: flex;
+  flex-direction: row;
+  font-family: Poppins;
+  font-size: 50px;
+  font-weight: bold;
+  /* color: white; */
+  align-items: end;
+  margin: none;
+}
+.temperature,
+.weather-status{
+  padding-left: 15px;
+}
+.weather-status{
+  display: flex;
+  font-family: Poppins;
+  font-weight: bold;
+  font-size: 25px;
+  align-items: start;
+  margin: none;
+}
+
+.precipitation,
+.humidity,
+.wind-speed{
+  padding-left: 10px;
+  margin-top: 10px;
+}
+
+.precipitation-percent,
+.humidity-value,
+.wind-speed-value{
+  text-align: right;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+

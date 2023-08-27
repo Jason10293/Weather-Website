@@ -85,5 +85,6 @@ function transitionPage(weatherPage, landingPage){
   landingPage.style.transform = 'translateX(-193px)';
   weatherPage.style.transform = 'translateX(200px)';
   weatherPage.style.opacity = '1';
-  weatherPage.style.backgroundColor = 'rgb(8,44,108)';
+  // weatherPage.style.backgroundColor = 'rgb(8,44,108)';
+  weatherPage.style.backgroundColor = 'white'
 }
