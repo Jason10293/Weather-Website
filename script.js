@@ -16,6 +16,16 @@ const daysOfWeek = [
   "Saturday",
 ];
 
+const daysOfWeekAbbv = [
+  "Sun",
+  "Mon",
+  "Tues",
+  "Wed",
+  "Thurs",
+  "Fri",
+  "Sat",
+];
+
 const monthsOfYear = [
   "January",
   "February",
@@ -52,6 +62,12 @@ const weatherIconMap = {
   '50n': 'water',
 }
 
+const numberMap = {
+  1 : 'one',
+  2 : 'two', 
+  3 : 'three',
+  4: 'four',
+}
 
 
 let latitude;
@@ -128,7 +144,7 @@ function transitionPage(weatherPage, landingPage){
 
   // weatherPage.style.backgroundColor = 'white'
 }
-fetchWeatherData('Richmond Hill');
+fetchWeatherData('New Haven');
 
 function fetchWeatherData(location){
   const apiURL = `https://api.openweathermap.org/data/2.5/forecast?q=${location}&appid=${APIKey}&units=metric`;
@@ -158,5 +174,24 @@ function fetchWeatherData(location){
     <div class="humidity-value"> ${humidity}&#37; </div>
     <div class="wind-speed"> Wind Speed </div>
     <div class="wind-speed-value"> ${windspeed} km&#47;h </div>`;
+
+    //get weather data for the next four days
+  
+    for(let i = 8; i < 33; i += 8){
+      //Icon, Day, Temperature
+      console.log(i);
+      const futureDayWeatherIconCode = data.list[i].weather[0].icon;
+      const futureDayDateObj = new Date(data.list[i].dt_txt);
+      const futureDateDayName = daysOfWeekAbbv[futureDayDateObj.getDay()]
+      const futureDayTemperature = Math.round(data.list[i].main.temp);
+
+      console.log(futureDayWeatherIconCode,futureDateDayName,futureDayTemperature);
+      const futureDayClassName = '.js-day-'.concat(numberMap[i / 8]);
+      document.querySelector(futureDayClassName).innerHTML = `
+      <i class = 'bx bx-${weatherIconMap[futureDayWeatherIconCode]} four-day-weather-icon'></i>
+      <div class="daily-day-name">${futureDateDayName}</div>
+      <div class="daily-temperature">${futureDayTemperature}&deg;C</div>
+      `;
+    }
   });
 }

@@ -62,12 +62,7 @@ body{
   margin-right: 200px;
   z-index: 100;
 }
-.bx-cloud{
-  position: absolute;
-  left: 165px;
-  top: 10px;
-  font-size: 50px;
-}
+
 .city-name-input{
   z-index: 100;
   box-sizing: border-box;
