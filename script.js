@@ -70,17 +70,13 @@ const numberMap = {
 }
 
 
-let latitude;
-let longitude;
-
+// let locationData;
 locationButton.addEventListener('click', () =>{
   if(navigator.geolocation){
     navigator.geolocation.getCurrentPosition(showLocation, checkError);
     transitionPage(weatherPage, landingPage);
   }
 });
-
-
 
 
 const checkError = (error) => {
@@ -107,10 +103,11 @@ const showLocation = async (position) => {
   );
   
   //store response object
-  let data = await response.json();
-  // latitude = data.longitude
-  console.log(data.address.city);
+  const locationData = await response.json();
+  fetchWeatherData(locationData.address.city);
 };
+
+
 
 
 
@@ -131,6 +128,8 @@ const inputField = document.querySelector('.js-city-name-getter');
 
 inputField.addEventListener('keydown', (event) => {
   if(event.key === 'Enter'){
+    const cityName = inputField.value;
+    fetchWeatherData(cityName);
     transitionPage(weatherPage, landingPage);
   }
 });
@@ -142,10 +141,8 @@ function transitionPage(weatherPage, landingPage){
   weatherPage.style.opacity = '1';
   weatherPage.style.backgroundColor = 'rgb(40,44,52)';
 
-  // weatherPage.style.backgroundColor = 'white'
 }
-fetchWeatherData('New Haven');
-
+// fetchWeatherData('Richmond Hill');
 function fetchWeatherData(location){
   const apiURL = `https://api.openweathermap.org/data/2.5/forecast?q=${location}&appid=${APIKey}&units=metric`;
   fetch(apiURL).then(response => response.json()).then(data => {
@@ -165,8 +162,6 @@ function fetchWeatherData(location){
     const humidity = data.list[0].main.humidity;
     const windspeed = Math.round(data.list[0].wind.speed);
 
-    console.log(precipitation, humidity, windspeed);
-
     weatherConditions.innerHTML = `
     <div class="precipitation"> Precipitation </div>
     <div class="precipitation-percent"> ${precipitation}&#37; </div>
@@ -179,14 +174,12 @@ function fetchWeatherData(location){
   
     for(let i = 8; i < 33; i += 8){
       //Icon, Day, Temperature
-      console.log(i);
       const futureDayWeatherIconCode = data.list[i].weather[0].icon;
       const futureDayDateObj = new Date(data.list[i].dt_txt);
       const futureDateDayName = daysOfWeekAbbv[futureDayDateObj.getDay()]
       const futureDayTemperature = Math.round(data.list[i].main.temp);
 
-      console.log(futureDayWeatherIconCode,futureDateDayName,futureDayTemperature);
-      const futureDayClassName = '.js-day-'.concat(numberMap[i / 8]);
+      const futureDayClassName = '.js-day-'.concat(numberMap[i/8]);
       document.querySelector(futureDayClassName).innerHTML = `
       <i class = 'bx bx-${weatherIconMap[futureDayWeatherIconCode]} four-day-weather-icon'></i>
       <div class="daily-day-name">${futureDateDayName}</div>
